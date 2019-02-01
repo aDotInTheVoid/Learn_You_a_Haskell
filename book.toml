@@ -1,0 +1,7 @@
+[book]
+authors = ["Nixon"]
+multilingual = false
+src = "src"
+title = "Learn You a Haskell for Great Good!"
+[output.html]
+theme = "theme"
