@@ -43,10 +43,10 @@
 
 - [Modules](06_modules/00_modules.md)
     - [Loading modules](06_modules/01_loading_modules.md)
-    - [Data.List](06_modules/02_data_list_md)
-    - [Data.Char](06_modules/03_data_char_md)
-    - [Data.Map](06_modules/04_data_map_md)
-    - [Data.Set](06_modules/05_data_set_md)
+    - [Data.List](06_modules/02_data_list.md)
+    - [Data.Char](06_modules/03_data_char.md)
+    - [Data.Map](06_modules/04_data_map.md)
+    - [Data.Set](06_modules/05_data_set.md)
     - [Making our own modules](06_modules/06_making_our_own_modules.md)
 
 - [Making Our Own Types and Typeclasses](07_making_our_own_types_and_typeclasses/00_making_our_own_types_and_typeclasses.md)
