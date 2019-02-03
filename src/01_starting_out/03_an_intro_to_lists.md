@@ -62,13 +62,16 @@ of characters, whereas `++` takes two lists. Even if you're adding an element
 to the end of a list with `++`, you have to surround it with square brackets so
 it becomes a list. 
 
-`[1,2,3]` is actually just syntactic sugar for `1:2:3:[]`. `[]` is an empty list. If we prepend `3` to it, it becomes `[3]`. If we prepend `2` to that, it becomes `[2,3]`, and so on. 
+`[1,2,3]` is actually just syntactic sugar for `1:2:3:[]`. `[]` is an empty
+list. If we prepend `3` to it, it becomes `[3]`. If we prepend `2` to that, it
+becomes `[2,3]`, and so on. 
 
 > **Note**: `[]`, `[[]]` and `[[],[],[]]` are all different things. The first
 > one is an empty list, the seconds one is a list that contains one empty list,
 > the third one is a list that contains three empty lists.
 
-If you want to get an element out of a list by index, use `!!`. The indices start at 0.
+If you want to get an element out of a list by index, use `!!`. The indices
+start at 0.
 
 ```haskell
 ghci> "Steve Buscemi" !! 6  
@@ -82,7 +85,6 @@ you'll get an error so be careful!
 
 Lists can also contain lists. They can also contain lists that contain lists
 that contain lists … 
-
 
 ```haskell
 ghci> let b = [[1,2,3,4],[5,3,3,3],[1,2,2,3,4],[1,2,3]]  
@@ -153,6 +155,111 @@ ghci> init [5,4,3,2,1]
 ```
 
 If we think of a list as a monster, here's what's what.
+
+![](http://s3.amazonaws.com/lyah/listmonster.png)
+
+But what happens if we try to get the head of an empty list?
+
+``` haskell
+ghci> head []  
+*** Exception: Prelude.head: empty list  
+```
+
+Oh my! It all blows up in our face! If there's no monster, it doesn't have a
+head. When using `head`, `tail`, `last` and `init`, be careful not to use them
+on empty lists. This error cannot be caught at compile time so it's always good
+practice to take precautions against accidentally telling Haskell to give you
+some elements from an empty list. 
+
+**`length`** takes a list and returns its length, obviously.
+
+```haskell
+ghci> length [5,4,3,2,1]  
+5  
+```
+
+**`null`** checks if a list is empty. If it is, it returns `True`, otherwise it
+returns `False`. Use this function instead of `xs == []` (if you have a list called `xs`)
+
+``` haskell
+ghci> null [1,2,3]  
+False  
+ghci> null []  
+True  
+```
+
+**`reverse`** reverses a list.
+
+``` haskell
+ghci> reverse [5,4,3,2,1]  
+[1,2,3,4,5]  
+```
+
+**`take`** takes number and a list. It extracts that many elements from the
+beginning of the list. Watch.
+
+``` haskell
+ghci> take 3 [5,4,3,2,1]  
+[5,4,3]  
+ghci> take 1 [3,9,3]  
+[3]  
+ghci> take 5 [1,2]  
+[1,2]  
+ghci> take 0 [6,6,6]  
+[]  
+```
+
+See how if we try to take more elements than there are in the list, it just
+returns the list. If we try to take 0 elements, we get an empty list.
+
+**`drop`** works in a similar way, only it drops the number of elements from the beginning of a list.
+
+``` haskell
+ghci> drop 3 [8,4,2,1,5,6]  
+[1,5,6]  
+ghci> drop 0 [1,2,3,4]  
+[1,2,3,4]  
+ghci> drop 100 [1,2,3,4]  
+[]   
+```
+
+**`maximum`** takes a list of stuff that can be put in some kind of order and
+returns the biggest element.
+
+**`minimum`** returns the smallest.
+
+``` haskell
+ghci> minimum [8,4,2,1,5,6]  
+1  
+ghci> maximum [1,9,2,3,4]  
+9   
+```
+
+**`sum`** takes a list of numbers and returns their sum.
+
+**`product`** takes a list of numbers and returns their product.
+
+``` haskell
+ghci> sum [5,2,1,6,3,2,5,7]  
+31  
+ghci> product [6,2,1,2]  
+24  
+ghci> product [1,2,5,6,7,9,2,0]  
+0   
+```
+
+**`elem`** takes a thing and a list of things and tells us if that thing is an
+element of the list. It's usually called as an infix function because it's
+easier to read that way.
+
+``` haskell
+ghci> 4 `elem` [3,4,5,6]  
+True  
+ghci> 10 `elem` [3,4,5,6]  
+False  
+```
+
+Those were a few basic functions that operate on lists. We'll take a look at more list functions [later](/06_modules/02_data_list.html)
 
 ---
 This work is licensed under a [Creative Commons Attribution-Noncommercial-Share
