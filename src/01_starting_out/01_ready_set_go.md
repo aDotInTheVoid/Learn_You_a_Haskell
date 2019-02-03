@@ -8,7 +8,7 @@ to do is run ghc's interactive mode and call some function to get a very basic
 feel for haskell. Open your terminal and type in `ghci`. You will be greeted
 with something like this. 
 
-```
+```text
 GHCi, version 6.8.2: http://www.haskell.org/ghc/  :? for help  
 Loading package base ... linking ... done.  
 Prelude>  
@@ -85,7 +85,7 @@ True
 What about doing `5 + "llama"` or `5 == True`? Well, if we try the first
 snippet, we get a big scary error message!
 
-```
+```text
 No instance for (Num [Char])  
 arising from a use of `+' at <interactive>:1:0-9  
 Possible fix: add an instance declaration for (Num [Char])  
